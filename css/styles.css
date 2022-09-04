@@ -1,0 +1,149 @@
+/* Обнуление */
+
+:root {
+    --dark: #1c1c1c;
+    --transition: 750ms cubic-bezier(0.2, 0.6, 0, 1);
+    --index: calc(1vw+1vh);
+    --gutter: 30px;
+    --side-small: 26;
+    --side-big: 36;
+    --depth: 4000px;
+}
+@font-face {
+    font-family: Raleway_c;
+    src: url(../fonts/raleway-v22-cyrillic-100.woff2);
+    font-weight: 100;
+}
+@font-face {
+    font-family: Raleway_c;
+    src: url(../fonts/raleway-v22-cyrillic-300.woff2);
+    font-weight: 300;
+}
+html,
+body {
+    line-height: 1.8;
+    font-size: calc(var(--index) * 1.2);
+    font-family: Raleway_c, sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+    height: var(--depth);
+    font-weight: 300;
+}
+/* ---------------------------------------------------------------------------- */
+/* ===========Visualy hidden titles=============== */
+
+.visually-hidden {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+/* .bgc-image {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/pexels-eberhard-grossgasteiger-1292115.jpg);
+    background-position: top;
+    background-size: contain;
+    background-repeat: no-repeat;
+} */
+
+/* ------Main---------------------------------------------------------------------- */
+.container {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    perspective: 1500px;
+}
+.gallery {
+    transform-style: preserve-3d;
+    height: 100%;
+}
+.frame {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition), opacity 750ms ease;
+    will-change: transform;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+}
+
+.frame__title {
+    font-weight: 100;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: calc(var(--index) * 3.3);
+    width: min-content;
+    line-height: 1;
+}
+
+.frame__media {
+    position: relative;
+    width: calc(var(--index) * var(--side-small));
+    height: calc(var(--index) * var(--side-big));
+    background-position: center;
+    background-size: cover;
+}
+.frame__left {
+    right: calc(var(--side-small) / 2 * var(--index) + var(--gutter));
+}
+.frame__right {
+    left: calc(var(--side-small) / 2 * var(--index) + var(--gutter));
+}
+
+.frame__bg {
+    background-color: #000000e6;
+}
+.frame__video {
+    width: calc(var(--index) * var(--side-big));
+    height: calc(var(--index) * var(--side-small));
+}
+.frame__left.frame__video {
+    right: calc(var(--side-big) / 2 * var(--index) + var(--gutter));
+}
+.frame__right.frame__video {
+    left: calc(var(--side-big) / 2 * var(--index) + var(--gutter));
+}
+.text__right > * {
+    text-align: left;
+    position: relative;
+    left: 18vw;
+}
+
+.text__left > * {
+    text-align: left;
+    position: relative;
+    right: 18vw;
+}
+
+.frame__text {
+    max-width: 30vw;
+    margin-top: 5vh;
+}
+
+.sound__button {
+    position: fixed;
+    bottom: 5vh;
+    right: 8vw;
+    cursor: pointer;
+    width: 24px;
+    transition: opacity 250ms ease;
+}
+.audio {
+}
+
+.sound__button.paused {
+    opacity: 0.25;
+}
